@@ -11,7 +11,7 @@ import Routes from './routes';
 const App = () => {
 	return (
 		<Provider store={store}>
-			<PersistGate loading={false} persistor={persistor}>
+			<PersistGate loading={null} persistor={persistor}>
 				<StatusBar barStyle="light-content" backgroundColor="#7159c1" />
 				<Routes />
 			</PersistGate>

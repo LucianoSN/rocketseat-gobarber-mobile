@@ -14,7 +14,6 @@ export function* signIn({ payload }) {
 			password,
 		});
 
-		console.tron.log(response.data);
 		const { token, user } = response.data;
 
 		if (user.provider) {
@@ -47,7 +46,6 @@ export function* signUp({ payload }) {
 			name,
 			email,
 			password,
-			provider: true,
 		});
 
 		// history.push('/');
