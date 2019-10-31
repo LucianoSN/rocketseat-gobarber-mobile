@@ -32,11 +32,10 @@ export default (isSigned = false) =>
 							keyboardHidesTabBar: true,
 							activeTintColor: '#FFF',
 							inactiveTintColor: 'rgba(255,255,255,0.6)',
+							safeAreaInset: { bottom: 'always', top: 'never' },
 							style: {
 								backgroundColor: '#8d41a8',
-								height: 70,
-								paddingTop: 10,
-								paddingBottom: 10,
+								borderTopWidth: 0,
 							},
 						},
 					}
