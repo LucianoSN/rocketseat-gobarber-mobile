@@ -34,6 +34,9 @@ export default (isSigned = false) =>
 							inactiveTintColor: 'rgba(255,255,255,0.6)',
 							style: {
 								backgroundColor: '#8d41a8',
+								height: 70,
+								paddingTop: 10,
+								paddingBottom: 10,
 							},
 						},
 					}

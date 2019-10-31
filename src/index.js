@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { StatusBar } from 'react-native';
+import NavigationBar from 'react-native-navbar-color';
 
 import '~/config/ReactotronConfig';
 
@@ -9,6 +10,16 @@ import { store, persistor } from '~/store';
 import App from './App';
 
 const Index = () => {
+	useEffect(() => {
+		const load = async () => {
+			NavigationBar.setColor('#8d41a8');
+		};
+
+		load();
+
+		return () => {};
+	}, []);
+
 	return (
 		<Provider store={store}>
 			<PersistGate loading={null} persistor={persistor}>
