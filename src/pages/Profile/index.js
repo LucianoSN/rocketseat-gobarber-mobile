@@ -94,6 +94,7 @@ const Profile = () => {
 						onSubmitEditing={() => passwordRef.current.focus()}
 						value={oldPassword}
 						onChangeText={setOldPassword}
+						keyboardType="numeric"
 					/>
 
 					<FormInput
@@ -107,6 +108,7 @@ const Profile = () => {
 						}
 						value={password}
 						onChangeText={setPassword}
+						keyboardType="numeric"
 					/>
 
 					<FormInput
@@ -118,6 +120,7 @@ const Profile = () => {
 						onSubmitEditing={handleSubmit}
 						value={confirmPassword}
 						onChangeText={setConfirmPassword}
+						keyboardType="numeric"
 					/>
 
 					<SubmitButton onPress={handleSubmit}>
