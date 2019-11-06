@@ -1,0 +1,13 @@
+import styled from 'styled-components';
+
+export const Container = styled.View`
+	flex: 1;
+	align-items: center;
+	justify-content: center;
+`;
+
+export const Text = styled.Text``;
+
+export const Press = styled.TouchableOpacity`
+	padding: 5px;
+`;
