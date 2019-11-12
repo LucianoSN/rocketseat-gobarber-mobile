@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Container, Left, Avatar, Info, Name, Time } from './styles';
 
 const Appointment = ({ data, onCancel }) => {
-	let avatar_url = data.provider.avatar.url;
+	// let avatar_url = data.provider.avatar.url;
 
 	// if (__DEV__ && avatar_url !== null) {
 	// 	avatar_url = String(avatar_url).replace('localhost', '10.0.3.2');
@@ -25,9 +25,9 @@ const Appointment = ({ data, onCancel }) => {
 			<Left>
 				<Avatar
 					source={{
-						uri:
-							avatar_url ||
-							`https://api.adorable.io/avatar/50/${data.provider.name}.png`,
+						uri: data.provider.avatar
+							? data.provider.avatar.url
+							: `https://api.adorable.io/avatar/50/${data.provider.name}.png`,
 					}}
 				/>
 				<Info>

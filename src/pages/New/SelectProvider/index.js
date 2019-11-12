@@ -1,14 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import Background from '~/components/Background';
-import { Container, Text, Press } from './styles';
+import api from '~/services/api';
 
-const SelectProvider = () => {
+import Background from '~/components/Background';
+import {
+	Container,
+	Press,
+	ProvidersList,
+	Provider,
+	Avatar,
+	Name,
+} from './styles';
+
+const SelectProvider = ({ navigation }) => {
+	const [providers, setProviders] = useState([]);
+
+	useEffect(() => {
+		const loadProviders = async () => {
+			const response = await api.get('providers');
+			setProviders(response.data);
+		};
+
+		loadProviders().then();
+	}, []);
+
 	return (
 		<Background>
 			<Container>
-				<Text>SelectProvider</Text>
+				<ProvidersList
+					data={providers}
+					keyExtractor={provider => String(provider.id)}
+					renderItem={({ item: provider }) => (
+						<Provider
+							onPress={() =>
+								navigation.navigate('SelectDateTime', {
+									provider,
+								})
+							}
+						>
+							<Avatar
+								source={{
+									uri: provider.avatar
+										? provider.avatar.url
+										: `https://api.adorable.io/avatar/50/${provider.name}.png`,
+								}}
+							/>
+							<Name>{provider.name}</Name>
+						</Provider>
+					)}
+				/>
 			</Container>
 		</Background>
 	);
@@ -22,7 +63,7 @@ SelectProvider.navigationOptions = ({ navigation }) => ({
 				navigation.navigate('Dashboard');
 			}}
 		>
-			<Icon name="chevron-left" size={20} color="#fff" />
+			<Icon name="chevron-left" size={30} color="#fff" />
 		</Press>
 	),
 });
