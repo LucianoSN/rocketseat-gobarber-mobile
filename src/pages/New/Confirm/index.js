@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import { formatRelative, parseISO, addHours } from 'date-fns';
+import { formatRelative, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt-BR';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -41,7 +41,6 @@ const Confirm = ({ navigation }) => {
 				/>
 				<Name>{provider.name}</Name>
 				<Time>{dateFormatted}</Time>
-				{/*<Time>{time}</Time>*/}
 
 				<SubmitButton onPress={handleAddAppointment}>
 					Confirmar agendamento
