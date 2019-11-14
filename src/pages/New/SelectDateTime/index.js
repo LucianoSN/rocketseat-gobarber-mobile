@@ -6,7 +6,7 @@ import api from '~/services/api';
 import Background from '~/components/Background';
 import DateInput from '~/components/DateInput';
 
-import { Container, Press } from './styles';
+import { Container, HourList, Hour, Title, Press } from './styles';
 
 const SelectDateTime = ({ navigation }) => {
 	const [date, setDate] = useState(new Date());
@@ -16,11 +16,14 @@ const SelectDateTime = ({ navigation }) => {
 
 	useEffect(() => {
 		const loadAvailable = async () => {
-			const response = api.get(`providers/${provider.id}/available`, {
-				params: {
-					date: date.getTime(),
-				},
-			});
+			const response = await api.get(
+				`providers/${provider.id}/available`,
+				{
+					params: {
+						date: date.getTime(),
+					},
+				}
+			);
 
 			setHours(response.data);
 		};
@@ -28,10 +31,31 @@ const SelectDateTime = ({ navigation }) => {
 		loadAvailable().then();
 	}, [date, provider.id]);
 
+	const handleSelectHour = time => {
+		navigation.navigate('Confirm', {
+			provider,
+			time,
+		});
+	};
+
 	return (
 		<Background>
 			<Container>
 				<DateInput date={date} onChange={setDate} />
+
+				<HourList
+					data={hours}
+					extraData={date}
+					keyExtractor={item => String(item.time)}
+					renderItem={({ item }) => (
+						<Hour
+							onPress={() => handleSelectHour(item.value)}
+							enabled={item.available}
+						>
+							<Title>{item.time}</Title>
+						</Hour>
+					)}
+				/>
 			</Container>
 		</Background>
 	);

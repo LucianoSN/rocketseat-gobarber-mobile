@@ -5,7 +5,7 @@ import pt from 'date-fns/locale/pt-BR';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container, DateButton, DateText, Picker } from './styles';
+import { Container, DateButton, DateText } from './styles';
 
 const DateInput = ({ date, onChange }) => {
 	const dateFormatted = useMemo(
